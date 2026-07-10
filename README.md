@@ -5,6 +5,8 @@ End-to-End, Matching-based Supervision* (CVPR 2026). The edge-detection network
 is [PiDiNet](https://github.com/hellozhuo/pidinet) (ICCV 2021) plus a small
 `SmallUNet` "thinner" that produces the crisp output.
 
+![MatchEDDemo running on macOS — input drawing, edge map, and crisp output side by side](Media/demo.png)
+
 Ported from the PyTorch reference at
 `../python/MatchED` (`models/pidinet.py`) with the
 [`port-mlx-to-swift`](../../.claude/skills/port-mlx-to-swift) methodology.
