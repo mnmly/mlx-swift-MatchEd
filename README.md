@@ -1,5 +1,7 @@
 # mlx-swift-MatchEd
 
+📖 [API documentation](https://mnmly.github.io/mlx-swift-MatchEd/)
+
 Apple-Silicon (MLX) port of **MatchEd** — *Crisp Edge Detection Using
 End-to-End, Matching-based Supervision* (CVPR 2026). The edge-detection network
 is [PiDiNet](https://github.com/hellozhuo/pidinet) (ICCV 2021) plus a small
@@ -99,8 +101,8 @@ Scripts/build_docs.sh            # → docs/MatchEdKit/index.html
 Scripts/build_docs.sh preview    # live-reload server
 ```
 
-Once the repo is pushed and GitHub Pages is enabled, the site serves at
-`https://mnmly.github.io/mlx-swift-MatchEd/`.
+The site is published from `main` by `.github/workflows/docs.yml` and served at
+**https://mnmly.github.io/mlx-swift-MatchEd/**.
 
 ## SwiftUI demo
 
