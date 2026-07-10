@@ -1,0 +1,23 @@
+# Build products
+.build/
+.xcdd/
+.xcdd-*/
+.swiftpm/
+DerivedData/
+.DS_Store
+
+# Xcode user state (but keep the hand-maintained Examples/*.xcodeproj tracked)
+xcuserdata/
+*.xcuserstate
+
+# Generated model artifacts (converted from checkpoints the user supplies)
+weights/
+fixtures/
+
+# Test / coverage / python scratch
+*.profraw
+__pycache__/
+*.pyc
+
+# DocC output
+/docs/
