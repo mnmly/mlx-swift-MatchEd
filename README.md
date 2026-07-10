@@ -5,7 +5,7 @@ End-to-End, Matching-based Supervision* (CVPR 2026). The edge-detection network
 is [PiDiNet](https://github.com/hellozhuo/pidinet) (ICCV 2021) plus a small
 `SmallUNet` "thinner" that produces the crisp output.
 
-![MatchEDDemo running on macOS — input drawing, edge map, and crisp output side by side](Media/demo.png)
+![MatchEDDemo running on macOS — input drawing, edge map, and crisp output side by side](assets/demo.png)
 
 Ported from the PyTorch reference at
 `../python/MatchED` (`models/pidinet.py`) with the
@@ -114,8 +114,9 @@ and reused across images.
 open Examples/MatchEDDemo/MatchEDDemo.xcodeproj   # then Run (⌘R)
 ```
 
-The app contains no model/conv/weight code — only a detached inference `Task`,
-autorelease hygiene, and main-actor hops for `CGImage` display.
+The app contains no model/conv/weight code — the MLX inference is confined to a
+`ModelHost` **actor** (off the main actor, one detection at a time) and the view
+model just `await`s it and publishes the resulting `CGImage`s.
 
 ## Layout
 
