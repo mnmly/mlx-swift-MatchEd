@@ -3,8 +3,8 @@
 # dependencies = ["torch", "numpy", "safetensors"]
 # ///
 """
-Convert a *raw* MatchED / PiDiNet checkpoint (.pth) into an NHWC safetensors
-file the Swift `MatchEDKit` loader consumes.
+Convert a *raw* MatchEd / PiDiNet checkpoint (.pth) into an NHWC safetensors
+file the Swift `MatchEdKit` loader consumes.
 
 Steps:
   1. Load `checkpoint['state_dict']`, strip any `module.` (DataParallel) prefix.

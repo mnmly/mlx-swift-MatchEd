@@ -3,7 +3,7 @@ import MLX
 import MLXNN
 
 extension PiDiNet {
-    /// Load a converted MatchED checkpoint (see `Scripts/convert_weights.py`).
+    /// Load a converted MatchEd checkpoint (see `Scripts/convert_weights.py`).
     ///
     /// The safetensors file must already be:
     ///   * PDC-converted (pixel-difference kernels folded into vanilla convs), and

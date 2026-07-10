@@ -1,11 +1,11 @@
-# mlx-swift-MatchED
+# mlx-swift-MatchEd
 
-Apple-Silicon (MLX) port of **MatchED** — *Crisp Edge Detection Using
+Apple-Silicon (MLX) port of **MatchEd** — *Crisp Edge Detection Using
 End-to-End, Matching-based Supervision* (CVPR 2026). The edge-detection network
 is [PiDiNet](https://github.com/hellozhuo/pidinet) (ICCV 2021) plus a small
 `SmallUNet` "thinner" that produces the crisp output.
 
-![MatchEDDemo running on macOS — input drawing, edge map, and crisp output side by side](assets/demo.png)
+![MatchEdDemo running on macOS — input drawing, edge map, and crisp output side by side](assets/demo.png)
 
 Ported from the PyTorch reference at
 `../python/MatchED` (`models/pidinet.py`) with the
@@ -42,7 +42,7 @@ ad/rd exact).
 
 ### 1. Convert a checkpoint
 
-The pretrained MatchED `.pth`
+The pretrained MatchEd `.pth`
 ([Drive](https://drive.google.com/file/d/1JV5P2O8j8pTH6F70QjQRg7mw08sGvwC5/view))
 is a *raw* PiDiNet checkpoint. Fold + transpose it once:
 
@@ -61,14 +61,14 @@ swift run -c release matched run \
 
 > Build/run with **xcodebuild** (or `swift run -c release`) — the Metal-capable
 > toolchain MLX needs is only present there. For tests use xcodebuild:
-> `xcodebuild -scheme mlx-swift-MatchED-Package -destination 'platform=macOS' test`.
+> `xcodebuild -scheme mlx-swift-MatchEd-Package -destination 'platform=macOS' test`.
 
 ### Library API
 
 ```swift
-import MatchEDKit
+import MatchEdKit
 
-let matched = try MatchED(weightsURL: url)
+let matched = try MatchEd(weightsURL: url)
 let out = try matched.detect(imageURL: imageURL)
 try ImageIOHelper.saveGray(out.thin, url: outURL)   // crisp edges
 // out.sideOutputs: [e1,e2,e3,e4, fused]; out.fused, out.thin — all [1,H,W,1]
@@ -92,26 +92,26 @@ bounded band across iterations; for a long-lived host consider
 
 ## Documentation
 
-`MatchEDKit` has DocC reference docs. Build the static site locally:
+`MatchEdKit` has DocC reference docs. Build the static site locally:
 
 ```bash
-Scripts/build_docs.sh            # → docs/MatchEDKit/index.html
+Scripts/build_docs.sh            # → docs/MatchEdKit/index.html
 Scripts/build_docs.sh preview    # live-reload server
 ```
 
 Once the repo is pushed and GitHub Pages is enabled, the site serves at
-`https://mnmly.github.io/mlx-swift-MatchED/`.
+`https://mnmly.github.io/mlx-swift-MatchEd/`.
 
 ## SwiftUI demo
 
-`Examples/MatchEDDemo` is a macOS app driving the **same** `MatchEDKit.MatchED`
+`Examples/MatchEdDemo` is a macOS app driving the **same** `MatchEdKit.MatchEd`
 pipeline as the CLI (shared driver, swift-cli-gui-shared-driver). Pick a
 `.safetensors` weights file and an image, press Detect — it shows the input,
 fused edge map, and crisp (thin) output side by side. The model is loaded once
 and reused across images.
 
 ```bash
-open Examples/MatchEDDemo/MatchEDDemo.xcodeproj   # then Run (⌘R)
+open Examples/MatchEdDemo/MatchEdDemo.xcodeproj   # then Run (⌘R)
 ```
 
 The app contains no model/conv/weight code — the MLX inference is confined to a
@@ -121,9 +121,9 @@ model just `await`s it and publishes the resulting `CGImage`s.
 ## Layout
 
 ```
-Sources/MatchEDKit/          PiDiNet, blocks, SmallUNet, ops, weight loading, MatchED pipeline
+Sources/MatchEdKit/          PiDiNet, blocks, SmallUNet, ops, weight loading, MatchEd pipeline
 Sources/matched/             CLI: run / parity / bench
-Examples/MatchEDDemo/        SwiftUI app (same MatchED driver)
+Examples/MatchEdDemo/        SwiftUI app (same MatchEd driver)
 Tests/                       end-to-end parity + shape tests
 Scripts/                     matched_ref.py (oracle), convert_weights.py,
                              make_parity_fixture.py (random), make_real_fixture.py (real),

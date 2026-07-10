@@ -15,7 +15,7 @@ public enum ImageIOHelper {
     public static func loadRGB(url: URL) throws -> MLXArray {
         guard let src = CGImageSourceCreateWithURL(url as CFURL, nil),
               let cg = CGImageSourceCreateImageAtIndex(src, 0, nil)
-        else { throw MatchEDError.imageLoad(url) }
+        else { throw MatchEdError.imageLoad(url) }
 
         let w = cg.width
         let h = cg.height
@@ -25,7 +25,7 @@ public enum ImageIOHelper {
             data: &buffer, width: w, height: h, bitsPerComponent: 8,
             bytesPerRow: w * 4, space: cs,
             bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
-        else { throw MatchEDError.imageLoad(url) }
+        else { throw MatchEdError.imageLoad(url) }
         ctx.draw(cg, in: CGRect(x: 0, y: 0, width: w, height: h))
 
         // Drop alpha, scale to [0,1].
@@ -75,7 +75,7 @@ public enum ImageIOHelper {
         let (h, w): (Int, Int)
         if shape.count == 4 { (h, w) = (shape[1], shape[2]) }
         else if shape.count == 2 { (h, w) = (shape[0], shape[1]) }
-        else { throw MatchEDError.imageSave(url) }
+        else { throw MatchEdError.imageSave(url) }
         precondition(h * w == total)
 
         var bytes = [UInt8](repeating: 0, count: total)
@@ -88,19 +88,19 @@ public enum ImageIOHelper {
             bytesPerRow: w, space: cs,
             bitmapInfo: CGImageAlphaInfo.none.rawValue),
               let cg = ctx.makeImage()
-        else { throw MatchEDError.imageSave(url) }
+        else { throw MatchEdError.imageSave(url) }
 
         guard let dest = CGImageDestinationCreateWithURL(
             url as CFURL, UTType.png.identifier as CFString, 1, nil)
-        else { throw MatchEDError.imageSave(url) }
+        else { throw MatchEdError.imageSave(url) }
         CGImageDestinationAddImage(dest, cg, nil)
-        guard CGImageDestinationFinalize(dest) else { throw MatchEDError.imageSave(url) }
+        guard CGImageDestinationFinalize(dest) else { throw MatchEdError.imageSave(url) }
     }
 
     #endif
 }
 
-public enum MatchEDError: Error, CustomStringConvertible {
+public enum MatchEdError: Error, CustomStringConvertible {
     case imageLoad(URL)
     case imageSave(URL)
 

@@ -1,24 +1,24 @@
-# ``MatchEDKit``
+# ``MatchEdKit``
 
-Crisp edge detection on Apple Silicon — an MLX port of MatchED / PiDiNet.
+Crisp edge detection on Apple Silicon — an MLX port of MatchEd / PiDiNet.
 
 ## Overview
 
-`MatchEDKit` runs the MatchED edge-detection network (PiDiNet trunk with CDCM /
+`MatchEdKit` runs the MatchEd edge-detection network (PiDiNet trunk with CDCM /
 CSAM / MapReduce side heads, plus a `SmallUNet` "thinner" for the crisp output)
 on Apple Silicon via [MLX](https://github.com/ml-explore/mlx-swift). Tensors are
 NHWC throughout and the model is plain grouped ``PiDiNet`` convolutions — the
 pixel-difference kernels are folded into vanilla convs once, at weight-load
 time, so there is no custom Metal.
 
-``MatchED`` is the high-level pipeline: load a converted checkpoint once, then
+``MatchEd`` is the high-level pipeline: load a converted checkpoint once, then
 run detection on images. It is the shared driver behind both the `matched` CLI
-and the `Examples/MatchEDDemo` SwiftUI app.
+and the `Examples/MatchEdDemo` SwiftUI app.
 
 ```swift
-import MatchEDKit
+import MatchEdKit
 
-let matched = try MatchED(weightsURL: weightsURL)
+let matched = try MatchEd(weightsURL: weightsURL)
 let out = try matched.detect(imageURL: imageURL)
 try ImageIOHelper.saveGray(out.thin, url: crispURL)   // refined crisp edges
 try ImageIOHelper.saveGray(out.fused, url: edgeURL)   // fused side map
@@ -32,9 +32,9 @@ by `Scripts/convert_weights.py` (or `make_real_fixture.py`). The Swift loader
 
 ### Running detection
 
-- ``MatchED``
+- ``MatchEd``
 - ``PiDiNetOutput``
-- ``MatchEDError``
+- ``MatchEdError``
 
 ### The model
 

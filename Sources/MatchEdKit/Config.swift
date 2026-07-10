@@ -22,7 +22,7 @@ public enum PDCType: String, Sendable {
 /// A named PiDiNet PDC configuration (the 16 per-layer op types).
 ///
 /// Mirrors `models/config.py::nets`. Only the shipped `carv4` config is needed
-/// for the MatchED checkpoints, but the table is trivial to extend.
+/// for the MatchEd checkpoints, but the table is trivial to extend.
 public struct PDCConfig: Sendable {
     /// 16 op types: index 0 is `init_block`, indices 1…15 are the block
     /// `conv1`s in trunk order (block1_1 … block4_4).
@@ -51,7 +51,7 @@ public struct PDCConfig: Sendable {
 
 /// Top-level PiDiNet architecture parameters.
 ///
-/// Defaults match the MatchED release command
+/// Defaults match the MatchEd release command
 /// (`--config carv4 --sa --dil`, base width 60, `dil=24`).
 public struct PiDiNetConfig: Sendable {
     public let inplane: Int

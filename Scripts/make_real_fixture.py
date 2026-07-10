@@ -4,7 +4,7 @@
 # ///
 """
 Real-weight, real-image parity fixture + Swift-ready weights, from a *raw*
-MatchED checkpoint.
+MatchEd checkpoint.
 
   1. Load + convert the checkpoint (fold PDC kernels) into `matched_ref.PiDiNet`.
   2. Export NHWC safetensors for the Swift loader.

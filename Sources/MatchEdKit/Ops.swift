@@ -44,7 +44,7 @@ private func resizeAxis(_ x: MLXArray, axis: Int, target: Int) -> MLXArray {
 /// (per channel, over N·H·W), i.e. PyTorch `nn.BatchNorm2d(..., track_running_stats=False)`.
 ///
 /// With `track_running_stats=False` PyTorch stores no running mean/var and uses
-/// batch statistics even in `eval()` — for MatchED's `SmallUNet` thinner, which
+/// batch statistics even in `eval()` — for MatchEd's `SmallUNet` thinner, which
 /// always runs at batch size 1, this is a spatial mean/var over the single
 /// image. `MLXNN.BatchNorm` cannot express this (it uses running stats in
 /// eval), so we implement it directly on NHWC tensors.

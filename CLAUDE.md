@@ -1,23 +1,23 @@
-# mlx-swift-MatchED
+# mlx-swift-MatchEd
 
-MLX (Apple Silicon) port of MatchED / PiDiNet crisp edge detection. The
-consumer-facing library is `MatchEDKit`; `matched` is the CLI; the SwiftUI demo
-lives under `Examples/MatchEDDemo`.
+MLX (Apple Silicon) port of MatchEd / PiDiNet crisp edge detection. The
+consumer-facing library is `MatchEdKit`; `matched` is the CLI; the SwiftUI demo
+lives under `Examples/MatchEdDemo`.
 
 ## Build & test
 
 - Build/test with **xcodebuild**, not `swift test` (the latter can't load MLX's
   `default.metallib`):
-  - `xcodebuild -scheme mlx-swift-MatchED-Package -destination 'platform=macOS' test`
+  - `xcodebuild -scheme mlx-swift-MatchEd-Package -destination 'platform=macOS' test`
 - The model runs the *converted* (vanilla-conv) form; PDC→conv folding happens
   in `Scripts/*.py` at weight-conversion time. See `README.md`.
 
 ## Documentation
 
-`MatchEDKit` ships DocC-generated reference docs (see
-`Sources/MatchEDKit/Documentation.docc/` and `Scripts/build_docs.sh`).
+`MatchEdKit` ships DocC-generated reference docs (see
+`Sources/MatchEdKit/Documentation.docc/` and `Scripts/build_docs.sh`).
 **`///` doc comments on public/`open` symbols are published** to the static site
-at https://mnmly.github.io/mlx-swift-MatchED/ (once Pages is enabled) and, if
+at https://mnmly.github.io/mlx-swift-MatchEd/ (once Pages is enabled) and, if
 `EMIT_LLMS_TXT=1` is used, into `docs/llms.txt`.
 
 When you add or modify a `public` or `open` declaration:
@@ -31,7 +31,7 @@ When you add or modify a `public` or `open` declaration:
   signature-sensitive: `foo(_:)` and `foo(_:_:)` are different.
 - When you add a new top-level symbol that belongs in the curated sidebar, add
   it under the appropriate `## Topics` group in
-  `Sources/MatchEDKit/Documentation.docc/MatchEDKit.md`. Topics are organized by
+  `Sources/MatchEdKit/Documentation.docc/MatchEdKit.md`. Topics are organized by
   *user task*, not alphabetic order.
 
 Verify before declaring documentation work done:

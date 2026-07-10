@@ -1,6 +1,6 @@
 import XCTest
 import MLX
-@testable import MatchEDKit
+@testable import MatchEdKit
 
 /// End-to-end numerical parity against the CPU PyTorch reference
 /// (`Scripts/matched_ref.py`). Fixture produced by
@@ -9,7 +9,7 @@ final class ParityTests: XCTestCase {
     /// Package root, derived from this file's path.
     static var root: URL {
         URL(fileURLWithPath: #filePath)
-            .deletingLastPathComponent()  // MatchEDKitTests
+            .deletingLastPathComponent()  // MatchEdKitTests
             .deletingLastPathComponent()  // Tests
             .deletingLastPathComponent()  // package root
     }

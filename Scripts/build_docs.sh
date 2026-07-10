@@ -45,9 +45,9 @@ cd "$(dirname "$0")/.."
 export SPI_GENERATE_DOCS=1
 export BUILD_DOC=1
 
-TARGETS="${TARGETS:-MatchEDKit}"
-HOSTING_BASE_PATH="${HOSTING_BASE_PATH:-mlx-swift-MatchED}"
-REPO_URL="${REPO_URL:-https://github.com/mnmly/mlx-swift-MatchED}"
+TARGETS="${TARGETS:-MatchEdKit}"
+HOSTING_BASE_PATH="${HOSTING_BASE_PATH:-mlx-swift-MatchEd}"
+REPO_URL="${REPO_URL:-https://github.com/mnmly/mlx-swift-MatchEd}"
 REPO_BRANCH="${REPO_BRANCH:-main}"
 OUTPUT_DIR="${OUTPUT_DIR:-docs}"
 

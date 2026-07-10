@@ -2,7 +2,7 @@ import Foundation
 import MLX
 import MLXNN
 
-/// Full inference output of the MatchED model.
+/// Full inference output of the MatchEd model.
 public struct PiDiNetOutput {
     /// Five sigmoid-activated side edge maps, NHWC `[B,H,W,1]`:
     /// `e1…e4` (per-stage) followed by the fused `output`.
@@ -14,7 +14,7 @@ public struct PiDiNetOutput {
     public var fused: MLXArray { sideOutputs[4] }
 }
 
-/// MatchED / PiDiNet edge-detection network (converted vanilla-conv form).
+/// MatchEd / PiDiNet edge-detection network (converted vanilla-conv form).
 ///
 /// Ported 1:1 from `models/pidinet.py::PiDiNet` for the shipped config
 /// (`carv4`, `--sa --dil`, base width 60, `dil=24`). All pixel-difference ops
@@ -53,7 +53,7 @@ public final class PiDiNet: Module {
 
     public init(_ config: PiDiNetConfig = .matched) {
         precondition(config.sa && config.dil != nil,
-                     "This port targets the shipped MatchED config (--sa --dil).")
+                     "This port targets the shipped MatchEd config (--sa --dil).")
         self.config = config
         let pdcs = config.pdc.pdcs
         let c = config.inplane

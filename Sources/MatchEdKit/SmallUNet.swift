@@ -2,7 +2,7 @@ import Foundation
 import MLX
 import MLXNN
 
-/// The MatchED "thinner" (`models/pidinet.py::SmallUNet`).
+/// The MatchEd "thinner" (`models/pidinet.py::SmallUNet`).
 ///
 /// A tiny 1-channel → 1-channel refinement net (enc1 → enc2 → dec1, no skip
 /// connections despite the name) applied to the fused edge map to produce the

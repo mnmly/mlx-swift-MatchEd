@@ -1,6 +1,6 @@
 // DetectionViewModel — the SwiftUI frontend's only stateful piece.
 //
-// All compute goes through MatchEDKit.MatchED via a `ModelHost` actor; there is
+// All compute goes through MatchEdKit.MatchEd via a `ModelHost` actor; there is
 // no model / conv / weight code here, by design (swift-cli-gui-shared-driver).
 //
 // Concurrency posture (this target: default MainActor isolation + approachable
@@ -16,7 +16,7 @@ import SwiftUI
 import Observation
 import CoreGraphics
 import ImageIO
-import MatchEDKit
+import MatchEdKit
 
 /// Rendered result crossing the actor → main-actor boundary. `CGImage` is
 /// immutable and thread-safe but not `Sendable`, so box it (the one place a
@@ -31,14 +31,14 @@ struct DetectionImages: @unchecked Sendable {
 /// construction (actor reentrancy is not hit — each call runs to completion
 /// before the next) and reuses the model across images so weights load once.
 actor ModelHost {
-    private var cached: (url: URL, model: MatchED)?
+    private var cached: (url: URL, model: MatchEd)?
 
     func detect(weightsURL: URL, imageURL: URL) throws -> DetectionImages {
-        let model: MatchED
+        let model: MatchEd
         if let c = cached, c.url == weightsURL {
             model = c.model
         } else {
-            model = try MatchED(weightsURL: weightsURL)
+            model = try MatchEd(weightsURL: weightsURL)
             cached = (weightsURL, model)
         }
         return try autoreleasepool {

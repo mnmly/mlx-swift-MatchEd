@@ -1,13 +1,13 @@
 import Foundation
 import ArgumentParser
 import MLX
-import MatchEDKit
+import MatchEdKit
 
 @main
 struct Matched: ParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "matched",
-        abstract: "MatchED crisp edge detection on Apple Silicon (MLX).",
+        abstract: "MatchEd crisp edge detection on Apple Silicon (MLX).",
         subcommands: [Run.self, Parity.self, Bench.self],
         defaultSubcommand: Run.self
     )
@@ -29,7 +29,7 @@ struct Run: ParsableCommand {
     var outdir: String = "."
 
     func run() throws {
-        let pipeline = try MatchED(weightsURL: URL(fileURLWithPath: weights))
+        let pipeline = try MatchEd(weightsURL: URL(fileURLWithPath: weights))
         let out = try pipeline.detect(imageURL: URL(fileURLWithPath: image))
 
         let stem = URL(fileURLWithPath: image).deletingPathExtension().lastPathComponent
@@ -89,11 +89,11 @@ struct Bench: ParsableCommand {
     @Option(help: "Warmup iterations.") var warmup: Int = 5
 
     func run() throws {
-        let pipeline: MatchED
+        let pipeline: MatchEd
         if let w = weights {
-            pipeline = try MatchED(weightsURL: URL(fileURLWithPath: w))
+            pipeline = try MatchEd(weightsURL: URL(fileURLWithPath: w))
         } else {
-            pipeline = MatchED()  // random init
+            pipeline = MatchEd()  // random init
         }
         // Reuse one input tensor across runs; new randomness each iter is
         // unnecessary for timing and would pollute the leak signal.

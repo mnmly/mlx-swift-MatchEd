@@ -1,7 +1,7 @@
 import Foundation
 import MLX
 
-/// High-level MatchED edge-detection pipeline: load model once, run on images.
+/// High-level MatchEd edge-detection pipeline: load model once, run on images.
 ///
 /// This is the shared driver (see swift-cli-gui-shared-driver) consumed by the
 /// `matched` CLI and reusable from a SwiftUI app.
@@ -11,11 +11,11 @@ import MLX
 /// actor (`ModelHost`) so it is never touched from two isolation domains at
 /// once. Keeping the driver isolation-neutral is what lets both frontends share
 /// it (swift-cli-gui-shared-driver); the frontend owns the isolation decision.
-public final class MatchED {
+public final class MatchEd {
     public let model: PiDiNet
     let dtype: DType
 
-    /// ImageNet normalization used by the MatchED dataloaders
+    /// ImageNet normalization used by the MatchEd dataloaders
     /// (`edge_dataloader.py`: ToTensor + Normalize).
     public static let mean: [Float] = [0.485, 0.456, 0.406]
     public static let std: [Float] = [0.229, 0.224, 0.225]

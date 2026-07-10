@@ -1,7 +1,7 @@
 """
-CPU PyTorch reference for the *converted* MatchED / PiDiNet model.
+CPU PyTorch reference for the *converted* MatchEd / PiDiNet model.
 
-This mirrors the Swift `MatchEDKit` port 1:1 (same module keys, same forward
+This mirrors the Swift `MatchEdKit` port 1:1 (same module keys, same forward
 math) so it can serve as the numerical-parity oracle. It is the converted
 (vanilla-conv) form: every pixel-difference op is a plain convolution here, and
 the `convert_pdc` helper folds a *raw* PiDiNet checkpoint into this form.
